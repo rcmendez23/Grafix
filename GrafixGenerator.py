@@ -41,6 +41,7 @@ for i in range(len(machCoords[0]))
     for j in range(len(machCoords[1]))
         X = machCoords[i]
         Y = machCoords[j]
+        f.write("G0")
         f.write("X"+ str(X))
         f.write("Y"+ str(Y))
         f.write("\n")
