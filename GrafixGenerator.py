@@ -1,47 +1,54 @@
 '''
 G-Code File Generator for Grafix Accessible CNC Calculator
 By Rebecca Mendez
+3/14/18
+Last Updated: 3/17/18
 User inputs a mathematical function. A table of points for that function is generated, scaled to workspace size and GCode is then generated. 
 Only supports polynomial functions right now.
 TODO: 
 - Copy past GCode Files to a separate "history" folder.
 '''
-
-PLATE_MAX = 100
-PLATE_MIN = -100
+#Constant Variables
+PLATE_MAX = 75 #in mm
+PLATE_MIN = -75 #in mm
 
 #User Input
-funcType = input("Enter Function Type (poly): ")
+funcType = input("Enter Function Type f=cartesian, p=polar, pa=parametric: ")
 
 #Polynomial Functions
-if funcType == "poly":
-    XMin = input("X Min: ") #Minimum X value
-    XMax = input("X Max:" )
+if funcType == "f":
+    XMin = float(input("X Min: ")) #Minimum X value
+    XMax = float(input("X Max:" ))
     funcRange = (XMax - XMin) #Window Range
-    step = (funcRange)/30 #x increment
-    funcStr = input("Enter Function using x as variable and ^ for powers: ")
-    funcTable = [[],[]] #create empty 2d list
-    for x in range(XMin, XMax, step): #For each X coordinate
-        y = exec(funcStr) #Convert funcStr to executable function of x
+    step =(funcRange)/10.0 #x increment
+    print('step: ', step)
+    funcStr = input("Enter Function using x as variable and ** for powers: ")
+    funcTable = [[],[]] #create empty 2d list for function coordinates
+    machCoords=[[],[]] #create empty 2d list for machine coordinates
+    x=XMin #Set counter to minimum X value
+    while((x>=XMin) & (x<=XMax)): #For each X coordinate
+        y = eval(funcStr) #Convert funcStr to executable function of x
         funcTable[0].append(x) #Save points to array
         funcTable[1].append(y) #Save points to array
-        print(funcTable[n][k]) #debug
+        x+=step #Increment x by step
+    print(funcTable) #debug
+else: #If user does not enter 'f'
+    print("Sorry, we only have cartesian 'f' capability at the moment.")
 
 #Scale points to mm coords on build plate
 plateRange = (PLATE_MAX - PLATE_MIN) 
-for n in range(len(funcTable[0]))
-    for k in range(len(funcTable[1]))
-        machCoords[n][k].append((((funcTable[n][k] - XMin) * plateRange) / funcRange) + PLATE_MIN) #Scale funcTable values into machCoords table
-        print(machCoords[n][k]) #debug
+for n in range(len(funcTable[0])):
+    machCoords[0].append((((funcTable[0][n] - XMin) * plateRange) / funcRange) + PLATE_MIN) #Scale funcTable values into machCoords table
+    machCoords[1].append((((funcTable[1][n] - XMin) * plateRange) / funcRange) + PLATE_MIN) #Scale funcTable values into machCoords table
+    print(machCoords[0][n],"    ", machCoords[1][n]) #debug
     
 #Create GCode File
-f = open('gcode_file', 'w') #Open G-Code File to Write
-f.write("G21 G0 X0 Y0") #units set to mm go to center to start
-for i in range(len(machCoords[0]))
-    for j in range(len(machCoords[1]))
-        X = machCoords[i]
-        Y = machCoords[j]
-        f.write("G0")
-        f.write("X"+ str(X))
-        f.write("Y"+ str(Y))
-        f.write("\n")
+f = open('gcode_file.gcode', 'w') #Open G-Code File to Write
+f.write("G21 G01 F10 X0 Y0\n") #units set to mm go to center to start
+for i in range(len(machCoords[0])):
+    X = machCoords[0][i]
+    Y = machCoords[1][i]
+    f.write("G01 ")
+    f.write("X"+ str(X))
+    f.write(" Y"+ str(Y))
+    f.write("\n")
