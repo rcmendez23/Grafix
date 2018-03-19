@@ -43,7 +43,7 @@ for n in range(len(funcTable[0])):
     print(machCoords[0][n],"    ", machCoords[1][n]) #debug
     
 #Create GCode File
-f = open('gcode_file.gcode', 'w') #Open G-Code File to Write
+f = open('grafix.gcode', 'w') #Open G-Code File to Write
 f.write("G21 G01 F10 X0 Y0\n") #units set to mm go to center to start
 for i in range(len(machCoords[0])):
     X = machCoords[0][i]
