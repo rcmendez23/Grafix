@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Bungee|Bungee+Shade|Gravitas+One');
+
+body {
+background-image: linear-gradient(to top left, #9b59b6, #1abc9c);
+box-sizing: border-box;
+}
+.container {
+  font-family: 'Bungee Shade', cursive;
+  font-size: 4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  border: 10px solid white;
+  padding-bottom: 2em;
+}
