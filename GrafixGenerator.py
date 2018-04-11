@@ -2,7 +2,7 @@
 G-Code File Generator for Grafix Accessible CNC Calculator
 By Rebecca Mendez
 3/14/18
-Last Updated: 3/17/18
+Last Updated: 4/11/18
 User inputs a mathematical function. A table of points for that function is generated, scaled to workspace size and GCode is then generated. 
 Only supports polynomial functions right now.
 TODO: 
