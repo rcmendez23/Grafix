@@ -41,11 +41,14 @@ for n in range(len(funcTable[0])):
     machCoords[0].append((((funcTable[0][n] - XMin) * plateRange) / funcRange) + PLATE_MIN) #Scale funcTable values into machCoords table
     machCoords[1].append((((funcTable[1][n] - XMin) * plateRange) / funcRange) + PLATE_MIN) #Scale funcTable values into machCoords table
     print(machCoords[0][n],"    ", machCoords[1][n]) #debug
+
+    ###GCode###
 # G21 = Metric Units (mm)   
-# G01 = Linear Motion at Feedrate
+# G01 = Linear Motion at Feedrate. Linear Interpolation.
 # F10 = 10 mm/min 
 # X = X coordinate
 # Y = Y Coordinate
+
 #Create GCode File
 f = open('grafix.gcode', 'w') #Open G-Code File to Write
 f.write("G21 G01 F10 X0 Y0\n") #units set to mm go to center to start
