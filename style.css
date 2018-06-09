@@ -13,8 +13,8 @@ box-sizing: border-box;
   height: 100vh;
   border: 10px solid white;
   padding-bottom: 2em;
-}
-ul {
+ 
+  ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -22,3 +22,5 @@ ul {
 li {
     display: inline;
 }
+}
+
