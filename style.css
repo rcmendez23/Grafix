@@ -13,8 +13,11 @@ box-sizing: border-box;
   height: 100vh;
   border: 10px solid white;
   padding-bottom: 2em;
-}
-li {
+  
+  .navbar {
+    font-family: 'Open Sans', cursive;
+    font-size: 4em;
     display: inline;
+  }
 }
 
