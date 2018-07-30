@@ -1,23 +1,54 @@
-@import url('https://fonts.googleapis.com/css?family=Bungee|Bungee+Shade|Gravitas+One');
+@import url('https://fonts.googleapis.com/css?family=Bungee+Hairline|Bungee+Shade|Open+Sans');
 
 body {
 background-image: linear-gradient(to top left, #9b59b6, #1abc9c);
 box-sizing: border-box;
 }
 .container {
-  font-family: 'Bungee Shade', cursive;
-  font-size: 4em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 100vh;
   border: 10px solid white;
   padding-bottom: 2em;
-  
-  .navbar {
-    font-family: 'Open Sans', cursive;
-    font-size: 4em;
-    display: inline;
-  }
 }
-
+.navbar {
+  font-family: 'Bungee Hairline', cursive;
+  /*border: 1px solid white;*/
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 0px;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+li {
+    float: left;
+}
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 30px;
+    text-decoration: none;
+}
+.title {
+  font-family: 'Bungee Shade', cursive;
+  display: block;
+ /* border: 1px solid white;*/
+  align-items: center;
+  justify-content: center; 
+  margin: auto;
+}
+p1.title {
+  /*border: 1px solid white;*/
+  text-align: center;
+  font-family: 'Bungee Shade', cursive;
+  font-size: 4em;
+}
+p2.title {
+  /*border: 1px solid white;*/
+  font-family: 'Bungee Hairline', cursive;
+  text-align: center;
+}
